@@ -21,6 +21,7 @@ from mir_lift_paths import (
     output_path,
     publish_current_output,
     require_workspace_root,
+    rust_toolchain,
     rustup_path,
     tool_env,
 )
@@ -1296,7 +1297,7 @@ def compile_osdi(verilog: Path, osdi: Path, target_dir: Path) -> None:
         [
             rustup_path(),
             "run",
-            "stable-aarch64-unknown-linux-gnu",
+            rust_toolchain(),
             "cargo",
             "run",
             "--manifest-path",

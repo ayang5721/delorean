@@ -74,7 +74,6 @@ def tool_env(target_dir: Path | None = None) -> dict[str, str]:
     env = os.environ.copy()
     env["PATH"] = ":".join(
         [
-            "/root/.rustup/toolchains/stable-aarch64-unknown-linux-gnu/bin",
             "/home/ron/.cargo/bin",
             "/root/.cargo/bin",
             "/opt/LLVM/bin",
@@ -85,6 +84,10 @@ def tool_env(target_dir: Path | None = None) -> dict[str, str]:
         target_dir.mkdir(parents=True, exist_ok=True)
         env["CARGO_TARGET_DIR"] = str(target_dir)
     return env
+
+
+def rust_toolchain() -> str:
+    return os.environ.get("MIR_LIFT_RUST_TOOLCHAIN", "stable")
 
 
 def rustup_path() -> str:

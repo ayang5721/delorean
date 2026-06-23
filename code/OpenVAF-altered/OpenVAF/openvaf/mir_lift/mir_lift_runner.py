@@ -5,7 +5,15 @@ import argparse
 import subprocess
 from pathlib import Path
 
-from mir_lift_paths import MANIFEST_PATH, current_root, output_path, require_workspace_root, rustup_path, tool_env
+from mir_lift_paths import (
+    MANIFEST_PATH,
+    current_root,
+    output_path,
+    require_workspace_root,
+    rust_toolchain,
+    rustup_path,
+    tool_env,
+)
 
 
 def default_output_path(verilog_file: Path, current_dir: Path) -> Path:
@@ -41,7 +49,7 @@ def main() -> int:
     cmd = [
         rustup_path(),
         "run",
-        "stable-aarch64-unknown-linux-gnu",
+        rust_toolchain(),
         "cargo",
         "run",
         "--manifest-path",

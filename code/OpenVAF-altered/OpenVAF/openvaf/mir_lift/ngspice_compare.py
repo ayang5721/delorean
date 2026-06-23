@@ -121,7 +121,6 @@ def runner_env() -> dict[str, str]:
     env = os.environ.copy()
     env["PATH"] = ":".join(
         [
-            "/root/.rustup/toolchains/stable-aarch64-unknown-linux-gnu/bin",
             "/home/ron/.cargo/bin",
             "/root/.cargo/bin",
             "/opt/LLVM/bin",
@@ -145,7 +144,7 @@ def compile_osdi(workspace_root: Path, env: dict[str, str], verilog_file: Path, 
     cmd = [
         rustup_bin(env),
         "run",
-        "stable-aarch64-unknown-linux-gnu",
+        os.environ.get("MIR_LIFT_RUST_TOOLCHAIN", "stable"),
         "cargo",
         "run",
         "--manifest-path",
