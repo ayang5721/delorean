@@ -1427,7 +1427,7 @@ module bsim4va(d, g, s, b);
     real dvth0_lod, W_tmp, Inv_ODeff, OD_offset, dk2_lod, deta0_lod,sceff;
     real BSIM4vfbzbfactor,toxpf,toxpi;
 
-    integer i, niter; 
+    integer i; 
     integer BSIM4tempMod, BSIM4lambdaGiven, BSIM4llambdaGiven, BSIM4wlambdaGiven;
     integer BSIM4plambdaGiven, BSIM4lcGiven;
     integer BSIM4saGiven, BSIM4sbGiven, BSIM4sdGiven;
@@ -8277,21 +8277,88 @@ module bsim4va(d, g, s, b);
                     if (vtfbphi2eot < 0.0)
                         vtfbphi2eot = 0.0;
 
-		    niter = 0;
 		    toxpf = toxel;
                     toxpi = 0.0;
-		    while ((niter<=4) && (abs(toxpf-toxpi)>1e-12))
-		      begin
-			toxpi = toxpf;
-			tmp2 = 2.0e8 * toxpf;
-			T0 = (Vgsteff + vtfbphi2eot) / tmp2;
-			T1 = 1.0 + exp(BSIM4bdos * 0.7 * ln(T0));
-			Tcen = BSIM4ados * 1.9e-9 / T1;
-			toxpf = toxel - epsroxl/BSIM4epsrsub * Tcen;
-			niter = niter+1;
-                        if(verbose == 1)
-                          $strobe("niter,toxpf,toxpi=%g,%g,%g\n",niter,toxpf,toxpi);
-		      end
+
+                        // Iteration 1
+            if (abs(toxpf-toxpi) > 1e-12)
+            begin
+                toxpi = toxpf;
+                tmp2 = 2.0e8 * toxpf;
+                T0 = (Vgsteff + vtfbphi2eot) / tmp2;
+                T1 = 1.0 + exp(BSIM4bdos * 0.7 * ln(T0));
+                Tcen = BSIM4ados * 1.9e-9 / T1;
+                toxpf = toxel - epsroxl/BSIM4epsrsub * Tcen;
+
+                if(verbose == 1)
+                $strobe("niter,toxpf,toxpi=%g,%g,%g\n",
+                        1,toxpf,toxpi);
+            end
+
+
+            // Iteration 2
+            if (abs(toxpf-toxpi) > 1e-12)
+            begin
+                toxpi = toxpf;
+                tmp2 = 2.0e8 * toxpf;
+                T0 = (Vgsteff + vtfbphi2eot) / tmp2;
+                T1 = 1.0 + exp(BSIM4bdos * 0.7 * ln(T0));
+                Tcen = BSIM4ados * 1.9e-9 / T1;
+                toxpf = toxel - epsroxl/BSIM4epsrsub * Tcen;
+
+                if(verbose == 1)
+                $strobe("niter,toxpf,toxpi=%g,%g,%g\n",
+                        2,toxpf,toxpi);
+            end
+
+
+            // Iteration 3
+            if (abs(toxpf-toxpi) > 1e-12)
+            begin
+                toxpi = toxpf;
+                tmp2 = 2.0e8 * toxpf;
+                T0 = (Vgsteff + vtfbphi2eot) / tmp2;
+                T1 = 1.0 + exp(BSIM4bdos * 0.7 * ln(T0));
+                Tcen = BSIM4ados * 1.9e-9 / T1;
+                toxpf = toxel - epsroxl/BSIM4epsrsub * Tcen;
+
+                if(verbose == 1)
+                $strobe("niter,toxpf,toxpi=%g,%g,%g\n",
+                        3,toxpf,toxpi);
+            end
+
+
+            // Iteration 4
+            if (abs(toxpf-toxpi) > 1e-12)
+            begin
+                toxpi = toxpf;
+                tmp2 = 2.0e8 * toxpf;
+                T0 = (Vgsteff + vtfbphi2eot) / tmp2;
+                T1 = 1.0 + exp(BSIM4bdos * 0.7 * ln(T0));
+                Tcen = BSIM4ados * 1.9e-9 / T1;
+                toxpf = toxel - epsroxl/BSIM4epsrsub * Tcen;
+
+                if(verbose == 1)
+                $strobe("niter,toxpf,toxpi=%g,%g,%g\n",
+                        4,toxpf,toxpi);
+            end
+
+
+            // Iteration 5
+            if (abs(toxpf-toxpi) > 1e-12)
+            begin
+                toxpi = toxpf;
+                tmp2 = 2.0e8 * toxpf;
+                T0 = (Vgsteff + vtfbphi2eot) / tmp2;
+                T1 = 1.0 + exp(BSIM4bdos * 0.7 * ln(T0));
+                Tcen = BSIM4ados * 1.9e-9 / T1;
+                toxpf = toxel - epsroxl/BSIM4epsrsub * Tcen;
+
+                if(verbose == 1)
+                $strobe("niter,toxpf,toxpi=%g,%g,%g\n",
+                        5,toxpf,toxpi);
+            end
+            
 		      BSIM4toxp = toxpf;  //changed code order to fix
 		      BSIM4coxp = epsroxl * `EPS0 / BSIM4toxp;
 	    end 
