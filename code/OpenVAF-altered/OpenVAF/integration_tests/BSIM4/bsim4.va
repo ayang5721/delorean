@@ -4873,6 +4873,8 @@ module bsim4va(d, g, s, b);
                 BSIM4wkt1l = 0.0;
             if (!BSIM4wkt2Given)
                 BSIM4wkt2 = 0.0;
+            if (!BSIM4wk2Given)
+                BSIM4wk2 = 0.0;
             if (!BSIM4wk3Given)
                 BSIM4wk3 = 0.0;      
             if (!BSIM4wk3bGiven)
@@ -5057,12 +5059,12 @@ module bsim4va(d, g, s, b);
                 BSIM4wnoff = 0.0;
             if (!BSIM4wvoffcvGiven)
                 BSIM4wvoffcv = 0.0;
+            if (!BSIM4wgamma1Given)
+                BSIM4wgamma1 = 0.0;
             if (!BSIM4wgamma2Given)
                 BSIM4wgamma2 = 0.0;
             if (!BSIM4wvbxGiven)
                 BSIM4wvbx = 0.0;
-            if (!BSIM4wk1Given)
-                BSIM4wk1 = 0.0;
             if (!BSIM4wk1Given)
                 BSIM4wk1 = 0.0;
 
@@ -5297,14 +5299,10 @@ module bsim4va(d, g, s, b);
                 BSIM4pnoff = 0.0;
             if (!BSIM4pvoffcvGiven)
                 BSIM4pvoffcv = 0.0;
-            if (!BSIM4pphinGiven)
-                BSIM4pphin = 0.0;
             if (!BSIM4pgamma1Given)
                 BSIM4pgamma1 = 0.0;
             if (!BSIM4pgamma2Given)
                 BSIM4pgamma2 = 0.0;
-            if (!BSIM4pvbxGiven)
-                BSIM4pvbx = 0.0;
             if (!BSIM4pvbxGiven)
                 BSIM4pvbx = 0.0;
             if (!BSIM4pk1Given)
@@ -12654,7 +12652,6 @@ module bsim4va(d, g, s, b);
     end
 
 endmodule // end of bsim4_va
-
 
 
 
