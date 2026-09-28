@@ -5299,14 +5299,10 @@ module bsim4va(d, g, s, b);
                 BSIM4pnoff = 0.0;
             if (!BSIM4pvoffcvGiven)
                 BSIM4pvoffcv = 0.0;
-            if (!BSIM4pphinGiven)
-                BSIM4pphin = 0.0;
             if (!BSIM4pgamma1Given)
                 BSIM4pgamma1 = 0.0;
             if (!BSIM4pgamma2Given)
                 BSIM4pgamma2 = 0.0;
-            if (!BSIM4pvbxGiven)
-                BSIM4pvbx = 0.0;
             if (!BSIM4pvbxGiven)
                 BSIM4pvbx = 0.0;
             if (!BSIM4pk1Given)
@@ -12656,7 +12652,6 @@ module bsim4va(d, g, s, b);
     end
 
 endmodule // end of bsim4_va
-
 
 
 
